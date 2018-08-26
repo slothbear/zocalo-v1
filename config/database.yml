@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: zocalo_production
-  username: zocalo
-  password: <%= ENV['ZOCALO_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: zocalo_production
+#   username: zocalo
+#   password: <%= ENV['ZOCALO_DATABASE_PASSWORD'] %>
