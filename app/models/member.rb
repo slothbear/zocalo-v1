@@ -1,5 +1,5 @@
 class Member
   def valid?
-    true
+    false
   end
 end
