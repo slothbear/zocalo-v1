@@ -1,5 +1,7 @@
 class Member
+  attr_accessor :last_name
+
   def valid?
-    false
+    @last_name.present?
   end
 end
