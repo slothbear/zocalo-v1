@@ -5,7 +5,7 @@ ruby '2.6'
 
 # Rails standard gems
 
-gem 'rails', '~> 5.2.1'
+gem 'rails'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -35,5 +35,5 @@ end
 # Project gems
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.7.0'
+  gem 'rspec-rails'
 end
