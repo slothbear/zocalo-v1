@@ -2,7 +2,11 @@ require "rails_helper"
 
 RSpec.describe "importing members" do
   describe "basic import requirements" do
-    it "creates a valid member"
+    it "creates a valid member" do
+      Member.import(file_fixture("valid_member.csv")
+      member = Member.find_by(last_name: "aLastName")
+      expect(member).to exist
+    end
     it "prohibits an invalid member"
     it "ingests all specified fields"
   end
@@ -21,5 +25,11 @@ RSpec.describe "importing members" do
     it "records request for attachment"
     it "records request for link-only"
     it "records request for no email newsletter"
+  end
+
+  describe "ignore unneeded CSV fields" do
+    it "ignore the 'directory update' field"
+    it "ignores the 'email list' field"
+    it "ignores the 'last info update' field"
   end
 end
