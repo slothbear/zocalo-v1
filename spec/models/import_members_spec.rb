@@ -2,11 +2,7 @@ require "rails_helper"
 
 RSpec.describe "importing members" do
   describe "basic import requirements" do
-    it "creates a valid member" do
-      Member.import(file_fixture("valid_member.csv"))
-      member = Member.find_by(last_name: "aLastName")
-      expect(member).to exist
-    end
+    it "creates a valid member"
     it "prohibits an invalid member"
     it "ingests all specified fields"
   end
