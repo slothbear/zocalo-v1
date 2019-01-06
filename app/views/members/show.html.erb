@@ -1,0 +1,119 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @member.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @member.middle_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @member.last_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @member.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @member.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @member.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @member.zip %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @member.email %>
+</p>
+
+<p>
+  <strong>Email alternate:</strong>
+  <%= @member.email_alternate %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @member.url %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @member.phone %>
+</p>
+
+<p>
+  <strong>Phone alternate:</strong>
+  <%= @member.phone_alternate %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @member.birthday %>
+</p>
+
+<p>
+  <strong>Joined on:</strong>
+  <%= @member.joined_on %>
+</p>
+
+<p>
+  <strong>Renewed on:</strong>
+  <%= @member.renewed_on %>
+</p>
+
+<p>
+  <strong>Expire on:</strong>
+  <%= @member.expire_on %>
+</p>
+
+<p>
+  <strong>Directory items:</strong>
+  <%= @member.directory_items %>
+</p>
+
+<p>
+  <strong>Interests:</strong>
+  <%= @member.interests %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @member.source %>
+</p>
+
+<p>
+  <strong>Subscription started on:</strong>
+  <%= @member.subscription_started_on %>
+</p>
+
+<p>
+  <strong>Subscription renewed on:</strong>
+  <%= @member.subscription_renewed_on %>
+</p>
+
+<p>
+  <strong>Subscription end on:</strong>
+  <%= @member.subscription_end_on %>
+</p>
+
+<p>
+  <strong>Newsletter format:</strong>
+  <%= @member.newsletter_format %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

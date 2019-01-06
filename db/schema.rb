@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_01_06_205921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "members", force: :cascade do |t|
+    t.text "first_name"
+    t.text "middle_name"
+    t.text "last_name", null: false
+    t.text "address"
+    t.text "city"
+    t.text "state"
+    t.text "zip"
+    t.text "email"
+    t.text "email_alternate"
+    t.text "url"
+    t.text "phone"
+    t.text "phone_alternate"
+    t.date "birthday"
+    t.date "joined_on"
+    t.date "renewed_on"
+    t.date "expire_on"
+    t.text "directory_items", default: [], array: true
+    t.text "interests"
+    t.text "source"
+    t.date "subscription_started_on"
+    t.date "subscription_renewed_on"
+    t.date "subscription_end_on"
+    t.text "newsletter_format"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

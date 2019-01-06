@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Middle name</th>
+      <th>Last name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Email</th>
+      <th>Email alternate</th>
+      <th>Url</th>
+      <th>Phone</th>
+      <th>Phone alternate</th>
+      <th>Birthday</th>
+      <th>Joined on</th>
+      <th>Renewed on</th>
+      <th>Expire on</th>
+      <th>Directory items</th>
+      <th>Interests</th>
+      <th>Source</th>
+      <th>Subscription started on</th>
+      <th>Subscription renewed on</th>
+      <th>Subscription end on</th>
+      <th>Newsletter format</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.first_name %></td>
+        <td><%= member.middle_name %></td>
+        <td><%= member.last_name %></td>
+        <td><%= member.address %></td>
+        <td><%= member.city %></td>
+        <td><%= member.state %></td>
+        <td><%= member.zip %></td>
+        <td><%= member.email %></td>
+        <td><%= member.email_alternate %></td>
+        <td><%= member.url %></td>
+        <td><%= member.phone %></td>
+        <td><%= member.phone_alternate %></td>
+        <td><%= member.birthday %></td>
+        <td><%= member.joined_on %></td>
+        <td><%= member.renewed_on %></td>
+        <td><%= member.expire_on %></td>
+        <td><%= member.directory_items %></td>
+        <td><%= member.interests %></td>
+        <td><%= member.source %></td>
+        <td><%= member.subscription_started_on %></td>
+        <td><%= member.subscription_renewed_on %></td>
+        <td><%= member.subscription_end_on %></td>
+        <td><%= member.newsletter_format %></td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

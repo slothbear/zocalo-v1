@@ -1,0 +1,2 @@
+json.extract! member, :id, :first_name, :middle_name, :last_name, :address, :city, :state, :zip, :email, :email_alternate, :url, :phone, :phone_alternate, :birthday, :joined_on, :renewed_on, :expire_on, :directory_items, :interests, :source, :subscription_started_on, :subscription_renewed_on, :subscription_end_on, :newsletter_format, :created_at, :updated_at
+json.url member_url(member, format: :json)
