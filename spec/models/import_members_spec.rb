@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe "importing members" do
   describe "basic import requirements" do
+    it "ingests required fields with standard attribute names"
     it "creates a valid member"
     it "prohibits an invalid member"
-    it "ingests all specified fields"
   end
 
   describe "birthday" do
@@ -23,9 +23,13 @@ RSpec.describe "importing members" do
     it "records request for no email newsletter"
   end
 
-  describe "ignore unneeded CSV fields" do
+  describe "maintain legacy system dates" do
+    it "copies 'Joined on' date as 'created_at'"
+    it "copies 'Last Info Update' date as 'updated_at'"
+  end
+
+  describe "ignore unneeded input fields" do
     it "ignore the 'directory update' field"
     it "ignores the 'email list' field"
-    it "ignores the 'last info update' field"
   end
 end
