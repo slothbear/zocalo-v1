@@ -1,8 +1,18 @@
 require "rails_helper"
 
 RSpec.describe "importing members" do
+
+  describe "column name transformations" do
+    it "standardizes column names"
+    it "transforms column names to (Ruby-standard) snake case"
+  end
+
+  describe "ignore unneeded input fields" do
+    it "ignores the DirectoryUpdate field"
+    it "ignores the EmailList field"
+  end
+
   describe "basic import requirements" do
-    it "ingests required fields with standard attribute names"
     it "creates a valid member"
     it "prohibits an invalid member"
   end
@@ -26,10 +36,5 @@ RSpec.describe "importing members" do
   describe "maintain legacy system dates" do
     it "copies 'Joined on' date as 'created_at'"
     it "copies 'Last Info Update' date as 'updated_at'"
-  end
-
-  describe "ignore unneeded input fields" do
-    it "ignore the 'directory update' field"
-    it "ignores the 'email list' field"
   end
 end
