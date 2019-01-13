@@ -2,10 +2,21 @@ require "rails_helper"
 
 RSpec.describe "importing members" do
 
-  describe "column name transformations" do
-    it "standardizes column names"
-    it "transforms column names to (Ruby-standard) snake case"
+  describe "column name transformations", focus: true do
+    it "transforms column names to (Ruby-standard) snake case" do
+      h = {"FirstName" => "Adam"}
+      std_names = MemberImporter.snake_case_names(h)
+      expect(std_names).to have_key("first_name")
+    end
+    it "lower cases column names as part of snake casing" do
+      h = {"Zip" => "zip"}
+      std_names = MemberImporter.snake_case_names(h)
+      expect(std_names).to have_key("zip")
+    end
+    it "makes column names consistent and convential"
   end
+
+
 
   describe "ignore unneeded input fields" do
     it "ignores the DirectoryUpdate field"
