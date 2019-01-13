@@ -9,14 +9,12 @@ RSpec.describe "importing members" do
       expect(std_names).to have_key("first_name")
     end
     it "lower cases column names as part of snake casing" do
-      h = {"Zip" => "zip"}
+      h = {"Zip" => "45424"}
       std_names = MemberImporter.snake_case_names(h)
       expect(std_names).to have_key("zip")
     end
     it "makes column names consistent and convential"
   end
-
-
 
   describe "ignore unneeded input fields" do
     it "ignores the DirectoryUpdate field"
