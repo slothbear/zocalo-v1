@@ -5,13 +5,13 @@ RSpec.describe "importing members" do
   describe "column name transformations", focus: true do
     it "transforms column names to (Ruby-standard) snake case" do
       h = {"FirstName" => "Adam"}
-      std_names = MemberImporter.snake_case_names(h)
-      expect(std_names).to have_key("first_name")
+      snake_names = MemberImporter.snake_case_names(h)
+      expect(snake_names).to have_key("first_name")
     end
     it "lower cases column names as part of snake casing" do
       h = {"Zip" => "45424"}
-      std_names = MemberImporter.snake_case_names(h)
-      expect(std_names).to have_key("zip")
+      snake_names = MemberImporter.snake_case_names(h)
+      expect(snake_names).to have_key("zip")
     end
     it "makes column names consistent and convential"
   end
