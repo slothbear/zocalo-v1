@@ -35,5 +35,6 @@ end
 # Project gems
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'rspec-rails'
 end
