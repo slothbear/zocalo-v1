@@ -33,16 +33,6 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "ignore unneeded input fields" do
-    it "ignores the DirectoryUpdate field"
-    it "ignores the EmailList field"
-  end
-
-  describe "basic import requirements" do
-    it "creates a valid member"
-    it "prohibits an invalid member"
-  end
-
   describe "birthday" do
     it "combines month, day, and year into birthday"
     it "adds default year to birthdays if none was specified"
@@ -59,8 +49,18 @@ RSpec.describe "importing members" do
     it "records request for no email newsletter"
   end
 
-  describe "maintain legacy system dates" do
+  describe "maintain legacy system dates as Rails standard AR fields" do
     it "copies 'Joined on' date as 'created_at'"
     it "copies 'Last Info Update' date as 'updated_at'"
+  end
+
+  describe "ignore unneeded input fields" do
+    it "ignores the DirectoryUpdate field"
+    it "ignores the EmailList field"
+  end
+
+  describe "basic import requirements" do
+    it "creates a valid member"
+    it "prohibits an invalid member"
   end
 end
