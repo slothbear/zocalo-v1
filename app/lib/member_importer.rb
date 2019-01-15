@@ -24,4 +24,13 @@ class MemberImporter
     Date.new(year.to_i, month.to_i, day.to_i)
   end
 
+  def self.newsletter_preferences(old_prefs)
+    no_email_newletter = old_prefs["NoElecNL"]
+    if no_email_newletter
+      ""
+    else
+      "undetermined"
+    end
+  end
+
 end

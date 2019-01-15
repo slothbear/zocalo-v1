@@ -33,7 +33,7 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "birthday", focus: true do
+  describe "birthday" do
     it "combines month, day, and year into birthday" do
       input = Hash[
         "Birthmonth", 5,
@@ -66,10 +66,14 @@ RSpec.describe "importing members" do
     it "observes member requests to leave info out of directory"
   end
 
-  describe "member newsletter preferences" do
+  describe "member newsletter preferences", focus: true do
+    it "records request for no email newsletter" do
+      input = {"NoElecNL" => true}
+      template = MemberImporter.newsletter_preferences(input)
+      expect(template).to eq("")
+    end
     it "records request for attachment"
     it "records request for link-only"
-    it "records request for no email newsletter"
   end
 
   describe "maintain legacy system dates as Rails standard AR fields" do
