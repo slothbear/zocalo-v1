@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "importing members" do
 
-  describe "column name transformations", focus: true do
+  describe "column name transformations" do
     it "transforms column names to (Ruby-standard) snake case" do
       h = {"FirstName" => "Adam"}
       snake_names = MemberImporter.snake_case_names(h)
@@ -33,8 +33,22 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "birthday" do
-    it "combines month, day, and year into birthday"
+  describe "birthday", focus: true do
+    it "combines month, day, and year into birthday" do
+      input = Hash[
+        "Birthmonth", 5,
+        "Birthday", 25,
+        "Birthyear", 1977
+      ]
+
+      # This function looks like we're testing the Date.new function —
+      # but only sort of. It's also testing the birthday input fields. Sort of.
+      birthday = MemberImporter.combine_birthday(input)
+      expect(birthday).to be_a Date
+      expect(birthday.month).to eq 5
+      expect(birthday.day).to eq 25
+      expect(birthday.year).to eq 1977
+    end
     it "adds default year to birthdays if none was specified"
   end
 

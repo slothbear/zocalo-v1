@@ -13,4 +13,11 @@ class MemberImporter
     end
   end
 
+  def self.combine_birthday(birth_items)
+    year = birth_items["Birthyear"].to_i
+    month = birth_items["Birthmonth"].to_i
+    day = birth_items["Birthday"].to_i
+    Date.new(year.to_i, month.to_i, day.to_i)
+  end
+
 end
