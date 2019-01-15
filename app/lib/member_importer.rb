@@ -26,10 +26,13 @@ class MemberImporter
 
   def self.newsletter_preferences(old_prefs)
     no_email_newletter = old_prefs["NoElecNL"]
+    no_attachment = old_prefs["NoAttach"]
     if no_email_newletter == "1"
       ""
+    elsif no_attachment == "1"
+      "link-only"
     else
-      "undetermined"
+      "attachment"
     end
   end
 

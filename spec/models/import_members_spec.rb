@@ -72,8 +72,16 @@ RSpec.describe "importing members" do
       template = MemberImporter.newsletter_preferences(input)
       expect(template).to eq("")
     end
-    it "records request for attachment"
-    it "records request for link-only"
+    it "records request for attachment" do
+      input = {"NoAttach" => "0"}
+      template = MemberImporter.newsletter_preferences(input)
+      expect(template).to eq("attachment")
+    end
+    it "records request for link-only" do
+      input = {"NoAttach" => "1"}
+      template = MemberImporter.newsletter_preferences(input)
+      expect(template).to eq("link-only")
+    end
   end
 
   describe "maintain legacy system dates as Rails standard AR fields" do
