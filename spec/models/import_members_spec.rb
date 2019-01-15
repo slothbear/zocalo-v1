@@ -61,12 +61,17 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "directory preferences" do
+  describe "directory preferences", focus: true do
+    it "omits member from directory on request" do
+      input = {"Directory" => "0", "Exclude" => "zip"}
+      dir_items = MemberImporter.directory_items(input)
+      expect(dir_items).to be_empty
+    end
     it "represents interests as an opt-in list"
-    it "observes member requests to leave info out of directory"
+    it "observes member request to leave selected info out of directory"
   end
 
-  describe "member newsletter preferences", focus: true do
+  describe "member newsletter preferences" do
     it "records request for no email newsletter" do
       input = {"NoElecNL" => "1"}
       template = MemberImporter.newsletter_preferences(input)

@@ -36,4 +36,8 @@ class MemberImporter
     end
   end
 
+  def self.directory_items(items)
+    []
+  end
+
 end
