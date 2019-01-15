@@ -49,7 +49,16 @@ RSpec.describe "importing members" do
       expect(birthday.day).to eq 25
       expect(birthday.year).to eq 1977
     end
-    it "adds default year to birthdays if none was specified"
+    it "adds default year to birthdays if none was specified" do
+      input = {"Birthmonth" => "3", "Birthday" => "30", "Birthyear" => ""}
+      birthday = MemberImporter.combine_birthday(input)
+      expect(birthday.year).to eq 1908
+    end
+    it "treats year 0 as missing and uses default year" do
+      input = {"Birthmonth" => "3", "Birthday" => "30", "Birthyear" => "0"}
+      birthday = MemberImporter.combine_birthday(input)
+      expect(birthday.year).to eq 1908
+    end
   end
 
   describe "directory preferences" do

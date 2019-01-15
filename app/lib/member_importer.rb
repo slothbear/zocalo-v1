@@ -15,6 +15,8 @@ class MemberImporter
 
   def self.combine_birthday(birth_items)
     year = birth_items["Birthyear"].to_i
+    year = 1908 if year.zero?
+
     month = birth_items["Birthmonth"].to_i
     day = birth_items["Birthday"].to_i
     Date.new(year.to_i, month.to_i, day.to_i)
