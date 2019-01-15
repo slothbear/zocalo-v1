@@ -37,7 +37,7 @@ class MemberImporter
   end
 
   def self.directory_items(items)
-    []
+    return Array.new if items["Directory"] == "0"
   end
 
 end
