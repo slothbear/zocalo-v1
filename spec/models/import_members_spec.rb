@@ -68,7 +68,7 @@ RSpec.describe "importing members" do
 
   describe "member newsletter preferences", focus: true do
     it "records request for no email newsletter" do
-      input = {"NoElecNL" => true}
+      input = {"NoElecNL" => "1"}
       template = MemberImporter.newsletter_preferences(input)
       expect(template).to eq("")
     end

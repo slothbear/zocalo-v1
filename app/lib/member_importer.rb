@@ -26,7 +26,7 @@ class MemberImporter
 
   def self.newsletter_preferences(old_prefs)
     no_email_newletter = old_prefs["NoElecNL"]
-    if no_email_newletter
+    if no_email_newletter == "1"
       ""
     else
       "undetermined"
