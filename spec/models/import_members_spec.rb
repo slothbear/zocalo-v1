@@ -13,7 +13,24 @@ RSpec.describe "importing members" do
       snake_names = MemberImporter.snake_case_names(h)
       expect(snake_names).to have_key("zip")
     end
-    it "makes column names consistent and convential"
+    it "makes column names consistent and convential" do
+      transmute_keys = {"Lastname" => "last_name"}
+      columns = {"Lastname" => "Sheridan"}
+      standard_names = MemberImporter.standardize_names(columns, transmute_keys)
+      expect(standard_names).to include({"last_name" => "Sheridan"})
+    end
+    it "transforms multiple column names" do
+      transmute_keys = {"email1" => "email", "email2" => "email_alternate"}
+      columns = {"email1" => "js@example.com", "email2" => "sher@example.org"}
+      standard_names = MemberImporter.standardize_names(columns, transmute_keys)
+      expect(standard_names).to include("email", "email_alternate")
+    end
+    it "renames only columns that appear in the rename list" do
+      transmute_keys = Hash.new     # no transformations requested
+      columns = {"zip" => "45424"}
+      standard_names = MemberImporter.standardize_names(columns, transmute_keys)
+      expect(standard_names).to include("zip")
+    end
   end
 
   describe "ignore unneeded input fields" do
