@@ -1,5 +1,7 @@
 require "csv"
 
+DEFAULT_BIRTH_YEAR = 1908
+
 class MemberImporter
   def self.snake_case_names(h)
     h.transform_keys(&:underscore)
@@ -15,7 +17,7 @@ class MemberImporter
 
   def self.combine_birthday(birth_items)
     year = birth_items["Birthyear"].to_i
-    year = 1908 if year.zero?
+    year = DEFAULT_BIRTH_YEAR if year.zero?
 
     month = birth_items["Birthmonth"].to_i
     day = birth_items["Birthday"].to_i
