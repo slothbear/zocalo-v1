@@ -67,8 +67,14 @@ RSpec.describe "importing members" do
       dir_items = MemberImporter.directory_items(input)
       expect(dir_items).to be_empty
     end
-    it "represents interests as an opt-in list"
-    it "observes member request to leave selected info out of directory"
+    it "observes request to leave selected info out of directory" do
+      input = Hash[
+        "Directory", "1",
+        "Exclude", "phone,email",
+      ]
+      dir_items = MemberImporter.directory_items(input)
+      expect(dir_items).not_to include("phone", "email")
+    end
   end
 
   describe "member newsletter preferences" do

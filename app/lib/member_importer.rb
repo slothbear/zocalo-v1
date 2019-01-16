@@ -38,6 +38,8 @@ class MemberImporter
 
   def self.directory_items(items)
     return Array.new if items["Directory"] == "0"
+    exclusions = items["Exclude"].split(",")
+    Member::ALL_DIRECTORY_ITEMS - exclusions
   end
 
 end
