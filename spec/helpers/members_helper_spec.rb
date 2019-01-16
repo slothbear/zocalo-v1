@@ -10,6 +10,9 @@ require 'rails_helper'
 #     end
 #   end
 # end
+
+__END__
+
 RSpec.describe MembersHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
