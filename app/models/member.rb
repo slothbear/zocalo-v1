@@ -18,6 +18,4 @@ class Member < ApplicationRecord
     interests
   ]
 
-  def self.import(thing)
-  end
 end

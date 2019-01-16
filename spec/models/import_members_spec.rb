@@ -90,7 +90,7 @@ RSpec.describe "importing members" do
 
   describe "copy legacy system dates to Rails standard AR fields" do
     it "copies member joindate to Rails created_at" do
-      input = {"joindate" => "7/19/2000 0:00:00"}
+      input = {"joined_on" => "7/19/2000 0:00:00"}
       dated_member = MemberImporter.instantiate_dates(input)
       expect(dated_member["created_at"]).to eq(Date.new(2000,7,19))
       expect(dated_member["joined_on"]).to eq(Date.new(2000,7,19))
@@ -119,8 +119,15 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "basic import requirements" do
-    it "creates a valid member"
-    it "prohibits an invalid member"
+  describe "basic import requirements", focus: true do
+    it "creates a valid member" do
+      file = file_fixture("valid_member.csv")
+      MemberImporter.import_legacy_csv(file)
+      expect(Member.where(last_name: "ValidLastName")).to exist
+    end
+    it "prohibits an invalid member" do
+      file = file_fixture("bad_member.csv")
+      expect{MemberImporter.import_legacy_csv(file)}.to raise_error(ActiveRecord::RecordInvalid)
+    end
   end
 end
