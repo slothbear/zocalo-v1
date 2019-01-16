@@ -57,7 +57,7 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "directory preferences", focus: true do
+  describe "directory preferences" do
     it "omits member from directory on request" do
       input = {"directory" => "0", "exclude" => "zip"}
       dir_items = MemberImporter.directory_items(input)
@@ -88,14 +88,24 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "maintain legacy system dates as Rails standard AR fields" do
-    it "copies 'Joined on' date as 'created_at'"
-    it "copies 'Last Info Update' date as 'updated_at'"
+  describe "copy legacy system dates to Rails standard AR fields" do
+    it "copies member joindate to Rails created_at" do
+      input = {"joindate" => "7/19/2000 0:00:00"}
+      dated_member = MemberImporter.instantiate_dates(input)
+      expect(dated_member["created_at"]).to eq(Date.new(2000,7,19))
+      expect(dated_member["joined_on"]).to eq(Date.new(2000,7,19))
+    end
+    it "copies member LastInfoUpdate to Rails updated_at" do
+      input = {"last_info_update" => "8/24/2013 0:00:00"}
+      dated_member = MemberImporter.instantiate_dates(input)
+      expect(dated_member["updated_at"]).to eq(Date.new(2013,8,24))
+    end
   end
 
-  describe "ignore unneeded input fields" do
-    it "ignores the DirectoryUpdate field"
-    it "ignores the EmailList field"
+  describe "remove unneeded input fields" do
+    it "removes the DirectoryUpdate field"
+    it "removes the EmailList field"
+    it "removes fields transformed into other names or values"
   end
 
   describe "basic import requirements" do

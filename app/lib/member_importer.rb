@@ -44,4 +44,18 @@ class MemberImporter
     Member::ALL_DIRECTORY_ITEMS - exclusions
   end
 
+  def self.instantiate_dates(items)
+    result = items.dup
+    if joindate = items["joindate"]
+      joined = Date.strptime(joindate, '%m/%d/%Y')
+      result["created_at"] = joined
+      result["joined_on"] = joined
+    end
+    if last_update = items["last_info_update"]
+      updated = Date.strptime(last_update, '%m/%d/%Y')
+      result["updated_at"] = updated
+    end
+    result
+  end
+
 end
