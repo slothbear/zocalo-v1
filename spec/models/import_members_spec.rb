@@ -35,14 +35,10 @@ RSpec.describe "importing members" do
 
   describe "birthday" do
     it "combines month, day, and year into birthday" do
-      input = Hash[
-        "Birthmonth", 5,
-        "Birthday", 25,
-        "Birthyear", 1977
-      ]
+      input = {"birthmonth" => "5", "birthday" => "25", "birthyear" => "1977"}
 
-      # This function looks like we're testing the Date.new function —
-      # but only sort of. It's also testing the birthday input fields. Sort of.
+      # This function looks like we're testing Date.new — but only
+      # sort of. It's also testing the birthday input fields. Sort of.
       birthday = MemberImporter.combine_birthday(input)
       expect(birthday).to be_a Date
       expect(birthday.month).to eq 5
@@ -50,12 +46,12 @@ RSpec.describe "importing members" do
       expect(birthday.year).to eq 1977
     end
     it "adds default year to birthdays if none was specified" do
-      input = {"Birthmonth" => "3", "Birthday" => "30", "Birthyear" => ""}
+      input = {"birthmonth" => "3", "birthday" => "30", "birthyear" => ""}
       birthday = MemberImporter.combine_birthday(input)
       expect(birthday.year).to eq DEFAULT_BIRTH_YEAR
     end
     it "treats year 0 as missing and uses default year" do
-      input = {"Birthmonth" => "3", "Birthday" => "30", "Birthyear" => "0"}
+      input = {"birthmonth" => "3", "birthday" => "30", "birthyear" => "0"}
       birthday = MemberImporter.combine_birthday(input)
       expect(birthday.year).to eq DEFAULT_BIRTH_YEAR
     end
@@ -63,15 +59,12 @@ RSpec.describe "importing members" do
 
   describe "directory preferences", focus: true do
     it "omits member from directory on request" do
-      input = {"Directory" => "0", "Exclude" => "zip"}
+      input = {"directory" => "0", "exclude" => "zip"}
       dir_items = MemberImporter.directory_items(input)
       expect(dir_items).to be_empty
     end
     it "observes request to leave selected info out of directory" do
-      input = Hash[
-        "Directory", "1",
-        "Exclude", "phone,email",
-      ]
+      input = {"directory" => "1", "exclude" => "phone,email"}
       dir_items = MemberImporter.directory_items(input)
       expect(dir_items).not_to include("phone", "email")
     end
@@ -79,17 +72,17 @@ RSpec.describe "importing members" do
 
   describe "member newsletter preferences" do
     it "records request for no email newsletter" do
-      input = {"NoElecNL" => "1"}
+      input = {"no_elec_nl" => "1"}
       template = MemberImporter.newsletter_preferences(input)
       expect(template).to eq("")
     end
     it "records request for attachment" do
-      input = {"NoAttach" => "0"}
+      input = {"no_attach" => "0"}
       template = MemberImporter.newsletter_preferences(input)
       expect(template).to eq("attachment")
     end
     it "records request for link-only" do
-      input = {"NoAttach" => "1"}
+      input = {"no_attach" => "1"}
       template = MemberImporter.newsletter_preferences(input)
       expect(template).to eq("link-only")
     end

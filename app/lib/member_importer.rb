@@ -16,17 +16,17 @@ class MemberImporter
   end
 
   def self.combine_birthday(birth_items)
-    year = birth_items["Birthyear"].to_i
+    year = birth_items["birthyear"].to_i
     year = DEFAULT_BIRTH_YEAR if year.zero?
 
-    month = birth_items["Birthmonth"].to_i
-    day = birth_items["Birthday"].to_i
+    month = birth_items["birthmonth"].to_i
+    day = birth_items["birthday"].to_i
     Date.new(year.to_i, month.to_i, day.to_i)
   end
 
   def self.newsletter_preferences(old_prefs)
-    no_email_newletter = old_prefs["NoElecNL"]
-    no_attachment = old_prefs["NoAttach"]
+    no_email_newletter = old_prefs["no_elec_nl"]
+    no_attachment = old_prefs["no_attach"]
     if no_email_newletter == "1"
       ""
     elsif no_attachment == "1"
@@ -37,8 +37,8 @@ class MemberImporter
   end
 
   def self.directory_items(items)
-    return Array.new if items["Directory"] == "0"
-    exclusions = items["Exclude"].split(",")
+    return Array.new if items["directory"] == "0"
+    exclusions = items["exclude"].split(",")
     Member::ALL_DIRECTORY_ITEMS - exclusions
   end
 
