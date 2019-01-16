@@ -103,9 +103,20 @@ RSpec.describe "importing members" do
   end
 
   describe "remove unneeded input fields" do
-    it "removes the DirectoryUpdate field"
-    it "removes the EmailList field"
-    it "removes fields transformed into other names or values"
+    it "removes the DirectoryUpdate field" do
+      input = {"last_name" => "Jones", "DirectoryUpdate" => "1"}
+      removals = ["DirectoryUpdate"]
+      scrubbed = MemberImporter.remove_fields(input, removals)
+      expect(scrubbed).to include("last_name")
+      expect(scrubbed).not_to include("DirectoryUpdate")
+    end
+    it "removes multiple fields" do
+      input = {"last_name" => "Noble", "no_attach" => "1", "email_list" => "No"}
+      removals = ["no_attach", "email_list"]
+      scrubbed = MemberImporter.remove_fields(input, removals)
+      expect(scrubbed).to include("last_name")
+      expect(scrubbed).not_to include("no_attach", "email_list")
+    end
   end
 
   describe "basic import requirements" do

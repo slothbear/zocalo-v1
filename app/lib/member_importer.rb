@@ -58,4 +58,8 @@ class MemberImporter
     result
   end
 
+  def self.remove_fields(fields, removals)
+    fields.except(*removals)
+  end
+
 end
