@@ -31,8 +31,10 @@ class MemberImporter
       ""
     elsif no_attachment == "1"
       "link-only"
-    else
+    elsif no_attachment == "0"
       "attachment"
+    else
+      "undetermined-newsletter-template"
     end
   end
 
