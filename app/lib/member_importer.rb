@@ -70,7 +70,7 @@ class MemberImporter
     return interests if items["directory"] == "0"
     exclusions = items["exclude"]
     return interests if exclusions.nil? || exclusions.start_with?("n/a")
-    "EXCLUDE: " + exclusions + "\n" + interests
+    "EXCLUDE(" + exclusions + ") " + interests
   end
 
   def self.american_date(date)
