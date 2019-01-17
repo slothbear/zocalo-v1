@@ -48,7 +48,8 @@ class MemberImporter
 
     month = birth_items["birthmonth"].to_i
     day = birth_items["birthday"].to_i
-    Date.new(year.to_i, month.to_i, day.to_i)
+    return nil if month.zero? || day.zero?
+    Date.new(year, month, day)
   end
 
   def self.newsletter_preferences(old_prefs)

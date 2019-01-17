@@ -55,6 +55,11 @@ RSpec.describe "importing members" do
       birthday = MemberImporter.combine_birthday(input)
       expect(birthday.year).to eq DEFAULT_BIRTH_YEAR
     end
+    it "returns nil if day or month is blank" do
+      input = {"birthmonth" => "", "birthday" => ""}
+      birthday = MemberImporter.combine_birthday(input)
+      expect(birthday).to be_nil
+    end
   end
 
   describe "copies directory exclusions to 'interests' field" do
