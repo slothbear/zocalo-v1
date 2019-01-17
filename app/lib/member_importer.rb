@@ -65,10 +65,12 @@ class MemberImporter
     end
   end
 
-  def self.directory_items(items)
-    return Array.new if items["directory"] == "0"
-    exclusions = items["exclude"].split(",")
-    Member::ALL_DIRECTORY_ITEMS - exclusions
+  def self.add_directory_exclusions(items)
+    interests = items["interests"]
+    return interests if items["directory"] == "0"
+    exclusions = items["exclude"]
+    return interests if exclusions.nil? || exclusions.start_with?("n/a")
+    "EXCLUDE: " + exclusions + "\n" + interests
   end
 
   def self.american_date(date)
@@ -103,6 +105,7 @@ class MemberImporter
     std_fields = standardize_names(snaked_fields, TRANSMUTE_KEYS)
     std_fields["birthday"] = combine_birthday(std_fields)
     std_fields["newsletter_format"] = newsletter_preferences(std_fields)
+    std_fields["interests"] = add_directory_exclusions(std_fields)
     with_dates = instantiate_dates(std_fields)
     remove_fields(with_dates, FIELDS_TO_REMOVE)
   end

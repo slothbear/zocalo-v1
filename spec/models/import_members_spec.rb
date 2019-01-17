@@ -57,16 +57,29 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "directory preferences" do
-    it "omits member from directory on request" do
-      input = {"directory" => "0", "exclude" => "zip"}
-      dir_items = MemberImporter.directory_items(input)
-      expect(dir_items).to be_empty
+  describe "copies directory exclusions to 'interests' field" do
+    # The directory exclusions are not handled during import since their
+    # content and formatting vary. Exclusions will be applied manually.
+    it "copies exclusions to interests field" do
+      input = {"directory" => "1", "exclude" => "zip and phones", "interests" => "zoos"}
+      interests = MemberImporter.add_directory_exclusions(input)
+      expect(interests).to include "zoos"  # maintain previous stuff
+      expect(interests).to include "zip and phones"  # include new stuff
     end
-    it "observes request to leave selected info out of directory" do
-      input = {"directory" => "1", "exclude" => "phone,email"}
-      dir_items = MemberImporter.directory_items(input)
-      expect(dir_items).not_to include("phone", "email")
+    it "doesn't copy exclusions if member member declines to be in directory" do
+      input = {"directory" => "0", "exclude" => "birthday", "interests" => "money"}
+      interests = MemberImporter.add_directory_exclusions(input)
+      expect(interests).to eq("money")
+    end
+    it "doesn't copy exclusions of 'n/a'" do
+      input = {"directory" => "1", "exclude" => "n/a.", "interests" => "Alhambra"}
+      interests = MemberImporter.add_directory_exclusions(input)
+      expect(interests).to eq("Alhambra")
+    end
+    it "doesn't copy exclusions if nil" do
+      input = {"directory" => "1", "exclude" => nil, "interests" => "books"}
+      interests = MemberImporter.add_directory_exclusions(input)
+      expect(interests).to eq("books")
     end
   end
 
@@ -119,7 +132,7 @@ RSpec.describe "importing members" do
     end
   end
 
-  describe "basic import requirements", focus: true do
+  describe "basic import requirements" do
     it "creates a valid member" do
       file = file_fixture("valid_member.csv")
       MemberImporter.import_legacy_csv(file)
