@@ -46,6 +46,7 @@ class MemberDashboard < Administrate::BaseDashboard
     :last_name,
     :email,
     :expire_on,
+    :interests,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
