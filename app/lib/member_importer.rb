@@ -112,7 +112,8 @@ class MemberImporter
   end
 
   def self.import_legacy_csv(file)
-    CSV.foreach(file, headers: true) do |row|
+    convert_nil = ->(s) {s || ""}
+    CSV.foreach(file, headers: true, converters: convert_nil) do |row|
       Member.create!(transmute(row.to_hash))
     end
   end
