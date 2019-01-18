@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "admin/members#index"
   resources :members
 
   namespace :admin do
