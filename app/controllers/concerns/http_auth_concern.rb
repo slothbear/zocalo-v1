@@ -6,7 +6,7 @@ module HttpAuthConcern
 
   def http_authenticate
       return true unless Rails.env == 'production'
-      http_basic_authenticate_with(
+      self.class.http_basic_authenticate_with(
         name: ENV.fetch("ADMIN_NAME"),
         password: ENV.fetch("ADMIN_PASSWORD"),
         realm: "Zocalo",
