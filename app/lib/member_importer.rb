@@ -58,9 +58,9 @@ class MemberImporter
     if no_email_newletter == "1"
       ""
     elsif no_attachment == "1"
-      "link-only"
+      "newsletter-link-only"
     elsif no_attachment == "0"
-      "attachment"
+      "newsletter-attachment"
     else
       "undetermined-newsletter-template"
     end

@@ -97,12 +97,17 @@ RSpec.describe "importing members" do
     it "records request for attachment" do
       input = {"no_attach" => "0"}
       template = MemberImporter.newsletter_preferences(input)
-      expect(template).to eq("attachment")
+      expect(template).to eq("newsletter-attachment")
     end
     it "records request for link-only" do
       input = {"no_attach" => "1"}
       template = MemberImporter.newsletter_preferences(input)
-      expect(template).to eq("link-only")
+      expect(template).to eq("newsletter-link-only")
+    end
+    it "reports unrecognized combination of preferences" do
+      input = {"no_elec_nl" => "0", "no_attach" => "bad-value"}
+      template = MemberImporter.newsletter_preferences(input)
+      expect(template).to eq("undetermined-newsletter-template")
     end
   end
 
