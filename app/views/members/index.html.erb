@@ -66,6 +66,12 @@
   </tbody>
 </table>
 
+<h2>import members</h2>
+
+<%= form_tag import_members_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
 <br>
 
 <%= link_to 'New Member', new_member_path %>
