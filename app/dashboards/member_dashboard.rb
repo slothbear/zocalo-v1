@@ -32,6 +32,8 @@ class MemberDashboard < Administrate::BaseDashboard
     subscription_renewed_on: Field::DateTime,
     subscription_end_on: Field::DateTime,
     newsletter_format: Field::Text.with_options(searchable: true),
+    directory_update: Field::Text,
+    email_list: Field::Text,
     created_at: Field::DateTime.with_options(format: "%m/%d/%Y"),
     updated_at: Field::DateTime.with_options(format: "%m/%d/%Y"),
   }.freeze
@@ -77,6 +79,8 @@ class MemberDashboard < Administrate::BaseDashboard
     :subscription_renewed_on,
     :subscription_end_on,
     :newsletter_format,
+    :directory_update,
+    :email_list,
     :created_at,
     :updated_at,
   ].freeze
@@ -108,6 +112,8 @@ class MemberDashboard < Administrate::BaseDashboard
     :subscription_renewed_on,
     :subscription_end_on,
     :newsletter_format,
+    :directory_update,
+    :email_list,
   ].freeze
 
   # Overwrite this method to customize how members are displayed

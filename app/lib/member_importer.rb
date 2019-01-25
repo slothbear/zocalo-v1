@@ -22,9 +22,7 @@ FIELDS_TO_REMOVE = [
   "birthyear",
   "directory",
   "exclude",
-  "directory_update",
   "no_elec_nl",
-  "email_list",
   "no_attach",
   "last_info_update",
 ]
