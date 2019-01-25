@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payments
   root to: "admin/members#index"
   resources :members do
     collection { post :import }

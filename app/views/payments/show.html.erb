@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @payment.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @payment.middle_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @payment.last_name %>
+</p>
+
+<p>
+  <strong>Paid on:</strong>
+  <%= @payment.paid_on %>
+</p>
+
+<p>
+  <strong>Expire on:</strong>
+  <%= @payment.expire_on %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @payment.comments %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

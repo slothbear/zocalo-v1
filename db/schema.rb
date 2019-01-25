@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_25_185554) do
+ActiveRecord::Schema.define(version: 2019_01_25_204730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dispatches", force: :cascade do |t|
+    t.text "recipients", default: [], array: true
+    t.text "template"
+    t.text "log"
+    t.datetime "sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: :cascade do |t|
     t.text "first_name"
@@ -43,6 +52,18 @@ ActiveRecord::Schema.define(version: 2019_01_25_185554) do
     t.datetime "updated_at", null: false
     t.text "directory_update"
     t.text "email_list"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.text "first_name"
+    t.text "middle_name"
+    t.text "last_name"
+    t.date "paid_on"
+    t.date "expire_on"
+    t.decimal "amount", precision: 8, scale: 2
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
