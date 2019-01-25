@@ -14,7 +14,7 @@ class PaymentDashboard < Administrate::BaseDashboard
     last_name: Field::Text.with_options(searchable: true),
     paid_on: Field::DateTime.with_options(format: "%m/%d/%Y"),
     expire_on: Field::DateTime.with_options(format: "%m/%d/%Y"),
-    amount: Field::String.with_options(searchable: false),
+    amount: Field::Number.with_options(prefix: "$", decimals: 2, searchable: false),
     comments: Field::Text.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

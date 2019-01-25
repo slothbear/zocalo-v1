@@ -34,6 +34,13 @@
   </tbody>
 </table>
 
+<h2>import payments</h2>
+
+<%= form_tag import_payments_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
 <br>
 
 <%= link_to 'New Payment', new_payment_path %>

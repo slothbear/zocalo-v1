@@ -44,6 +44,11 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def import
+    Payment.import(params[:file])
+    redirect_to root_url, notice: "payments imported."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
