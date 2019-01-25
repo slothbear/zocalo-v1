@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "admin/members#index"
-  resources :members
+  resources :members do
+    collection { post :import }
+  end
 
   namespace :admin do
     resources :members
