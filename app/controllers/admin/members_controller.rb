@@ -1,7 +1,7 @@
 module Admin
   class MembersController < Admin::ApplicationController
     def scoped_resource
-      Member.active.order(expire_on: "asc")
+      Member.order(expire_on: "desc")
     end
   end
 end
