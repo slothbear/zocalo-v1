@@ -32,8 +32,8 @@ class MemberDashboard < Administrate::BaseDashboard
     subscription_renewed_on: Field::DateTime,
     subscription_end_on: Field::DateTime,
     newsletter_format: Field::Text.with_options(searchable: true),
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: Field::DateTime.with_options(format: "%m/%d/%Y"),
+    updated_at: Field::DateTime.with_options(format: "%m/%d/%Y"),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -46,7 +46,8 @@ class MemberDashboard < Administrate::BaseDashboard
     :last_name,
     :email,
     :expire_on,
-    :interests,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
