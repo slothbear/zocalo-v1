@@ -6,7 +6,7 @@ class CreatePayments < ActiveRecord::Migration[5.2]
       t.text :last_name
       t.date :paid_on
       t.date :expire_on
-      t.decimal :amount
+      t.decimal :amount, :precision => 8, :scale => 2
       t.text :comments
 
       t.timestamps
