@@ -1,12 +1,14 @@
+%p#notice= notice
+
 %h1 Listing dispatches
 
 %table
   %thead
     %tr
-      %th Recipients
-      %th Template
-      %th Log
-      %th Sent at
+      %th created
+      %th recipients
+      %th template
+      %th sent at
       %th
       %th
       %th
@@ -14,9 +16,9 @@
   %tbody
     - @dispatches.each do |dispatch|
       %tr
-        %td= dispatch.recipients
+        %td= dispatch.created_at.to_s(:short)
+        %td= dispatch.recipients.size
         %td= dispatch.template
-        %td= dispatch.log
         %td= dispatch.sent_at
         %td= link_to 'Show', dispatch
         %td= link_to 'Edit', edit_dispatch_path(dispatch)

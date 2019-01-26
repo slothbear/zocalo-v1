@@ -44,6 +44,12 @@ class DispatchesController < ApplicationController
     end
   end
 
+  def generate
+    Dispatch.create(template: "newsletter")
+    Dispatch.create(template: "renewal-notices")
+    redirect_to dispatches_path, notice: "dispatches generated"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dispatch

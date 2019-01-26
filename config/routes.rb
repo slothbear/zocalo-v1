@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
-  resources :dispatches
+  resources :dispatches do
+    get 'generate', on: :collection
+  end
 
   namespace :admin do
     resources :members

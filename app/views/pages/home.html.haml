@@ -5,7 +5,9 @@
     = link_to "members", admin_members_path, class: "btn btn-primary"
   %li.list-group-item
     = link_to "payments", admin_payments_path, class: "btn btn-primary"
+
+%ul.list-group.list-group-flush
   %li.list-group-item
-    = link_to "compose emails", "#", class: "btn btn-primary"
+    = link_to "compose emails", generate_dispatches_path, class: "btn btn-primary"
   %li.list-group-item
-    = link_to "dispatches", "#", class: "btn btn-primary"
+    = link_to "dispatches", dispatches_path, class: "btn btn-primary"
