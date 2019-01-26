@@ -1,0 +1,22 @@
+= form_for @dispatch do |f|
+  - if @dispatch.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dispatch.errors.count, "error")} prohibited this dispatch from being saved:"
+      %ul
+        - @dispatch.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :recipients
+    = f.text_area :recipients
+  .field
+    = f.label :template
+    = f.text_area :template
+  .field
+    = f.label :log
+    = f.text_area :log
+  .field
+    = f.label :sent_at
+    = f.datetime_select :sent_at
+  .actions
+    = f.submit 'Save'

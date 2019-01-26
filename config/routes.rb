@@ -9,9 +9,12 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  resources :dispatches
+
   namespace :admin do
     resources :members
     resources :payments
+    resources :dispatches
     root to: "members#index"
   end
 end

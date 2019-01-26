@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Recipients:
+  = @dispatch.recipients
+%p
+  %b Template:
+  = @dispatch.template
+%p
+  %b Log:
+  = @dispatch.log
+%p
+  %b Sent at:
+  = @dispatch.sent_at
+
+= link_to 'Edit', edit_dispatch_path(@dispatch)
+\|
+= link_to 'Back', dispatches_path
