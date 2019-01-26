@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "admin/members#index"
+  root to: "pages#home"
 
   resources :members do
     collection { post :import }

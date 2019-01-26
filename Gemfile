@@ -41,3 +41,4 @@ group :development, :test do
 end
 
 gem 'administrate'
+gem 'haml-rails'
